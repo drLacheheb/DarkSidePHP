@@ -8,23 +8,27 @@
     <main>
         <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
 
-            <button
-                    class="text-white bg-blue-700 font-medium rounded-lg text-sm px-5 py-2.5 mb-10">
-                <a href="/notes">
-                    return
-                </a>
-            </button>
+            <a class="text-white bg-blue-700 font-medium rounded-lg text-sm px-5 py-2.5" href="/notes">
+                return
+            </a>
+            <div class="mt-10">
+                <li><?= $note["body"] ?></li>
+            </div>
 
-            <li><?= $note["body"] ?></li>
+            <div class="mt-10 flex">
 
-            <form method="post" class="mt-10">
-                <input type="hidden" name="_method" value="delete">
-                <input type="hidden" name="id" value="<?= $note['id'] ?>">
-                <button type="submit"
-                        class="text-white bg-red-700 hover:bg-red-800 font-medium rounded-lg text-sm px-5 py-2.5">
-                    Delete
-                </button>
-            </form>
+                <a class="text-white bg-yellow-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-5"
+                   href="<?= "/note/edit?id=" . $note["id"] ?>">Edit</a>
+
+                <form method="post">
+                    <input type="hidden" name="_method" value="delete">
+                    <input type="hidden" name="id" value="<?= $note['id'] ?>">
+                    <button type="submit"
+                            class="text-white bg-red-700 hover:bg-red-800 font-medium rounded-lg text-sm px-5 py-2.5">
+                        Delete
+                    </button>
+                </form>
+            </div>
         </div>
     </main>
 </div>

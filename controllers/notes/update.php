@@ -8,6 +8,13 @@ $errors = [];
 
 $db = App::resolve(DataBase::class);
 
+$currentUser = 1;
+
+$note = $db->query("select * from notes where id = :id", [
+    'id' => $_POST["id"]
+])->findOrFail();
+
+authorize($note['user_id'] === $currentUser);
 
 if (!Validator::string($_POST['body'], 1, 1000)) {
     $errors['body'] = 'body of not more than 1000 characters is required';
@@ -19,13 +26,12 @@ if (!empty($errors)) {
         'errors' => $errors,
         'body' => $_POST['body']
     ]);
-
     exit();
 }
 
-$db->query("INSERT INTO lara_blog.notes (body, user_id) VALUES (:body, :user_id)", [
+$db->query("UPDATE notes SET body = :body WHERE id = :id;", [
     'body' => htmlspecialchars($_POST['body']),
-    'user_id' => 1
+    'id' => $note['id']
 ]);
 
-header('location: /notes');
+header("location: /note?id={$note['id']}");

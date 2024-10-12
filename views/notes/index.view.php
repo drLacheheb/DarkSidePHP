@@ -12,11 +12,9 @@
             <?php endforeach; ?>
         </div>
 
-        <button class="ml-10 mt-10 text-white bg-green-700 font-medium rounded-lg text-sm px-5 py-2.5 ">
-            <a href="/note/create">
-                Create new note
-            </a>
-        </button>
+        <a class="ml-10 mt-10 text-white bg-green-700 font-medium rounded-lg text-sm px-5 py-2.5" href="/note/create">
+            Create new note
+        </a>
 
     </main>
 </div>

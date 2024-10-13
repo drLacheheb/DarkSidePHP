@@ -13,7 +13,14 @@ class DataBase
     public function __construct($config)
     {
 
-        $dsn = "mysql:" . http_build_query($config, '', ';');
+        $driver = $config['driver'];
+        unset($config['driver']);
+
+        if ($driver === 'sqlite') {
+            $dsn = "{$driver}:". base_path("{$config['name']}.sqlite");
+        } else {
+            $dsn = "{$driver}:" . http_build_query($config, '', ';');
+        }
 
         $this->connection = new PDO($dsn);
         $this->connection->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);

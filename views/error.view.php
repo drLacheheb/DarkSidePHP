@@ -7,7 +7,7 @@
 
     <main>
         <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-            <li><a href="/" class="">return to the home page</a></li>
+            <li><a href="/notes" class="">return to the home page</a></li>
         </div>
     </main>
 </div>

@@ -1,19 +1,23 @@
 <?php
 
-$router->get("/", "controllers/home.php");
-$router->get("/about", "controllers/about.php");
-$router->get("/contact", "controllers/contact.php");
+$router->get("/", "home.php");
+$router->get("/about", "about.php");
+$router->get("/contact", "contact.php");
 
-$router->get('/notes', 'controllers/notes/index.php');
-$router->get('/note', 'controllers/notes/show.php');
+$router->get('/notes', 'notes/index.php')->only('auth');
+$router->get('/note', 'notes/show.php');
 
-$router->get('/note/create', 'controllers/notes/create.php');
-$router->post('/note/create', 'controllers/notes/store.php');
+$router->get('/note/create', 'notes/create.php');
+$router->post('/note/create', 'notes/store.php');
 
-$router->get('/note/edit', 'controllers/notes/edit.php');
-$router->patch('/note/edit', 'controllers/notes/update.php');
+$router->get('/note/edit', 'notes/edit.php');
+$router->patch('/note/edit', 'notes/update.php');
 
-$router->delete('/note', 'controllers/notes/destroy.php');
+$router->delete('/note', 'notes/destroy.php');
 
-$router->get('/register', 'controllers/registration/create.php');
-$router->post('/register', 'controllers/registration/store.php');
+$router->get('/register', 'registration/create.php')->only('guest');
+$router->post('/register', 'registration/store.php')->only('guest');
+
+$router->get('/login', 'session/create.php')->only('guest');
+$router->post('/session', 'session/store.php')->only('guest');
+$router->delete('/session', 'session/destroy.php')->only('auth');

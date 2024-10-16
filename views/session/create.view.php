@@ -9,12 +9,12 @@
             <img class="mx-auto h-10 w-auto" src="https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=600"
                  alt="Your Company">
             <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
-                Registration for new account
+                Welcome Back
             </h2>
         </div>
 
         <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-            <form class="space-y-6" action="/register" method="POST">
+            <form class="space-y-6" action="/session" method="POST">
                 <div>
                     <label for="email" class="block text-sm font-medium leading-6 text-gray-900">
                         Email address
@@ -49,14 +49,16 @@
                 <div>
                     <button type="submit"
                             class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm">
-                        Register
+                        Login
                     </button>
                 </div>
             </form>
 
             <p class="mt-10 text-center text-sm text-gray-500">
-                Already a member?
-                <a href="/login" class="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">Login</a>
+                Not a member?
+                <a href="/register" class="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">
+                    Register here
+                </a>
             </p>
         </div>
     </div>

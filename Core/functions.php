@@ -37,8 +37,27 @@ function base_path($path): string
     return BASE_PATH . $path;
 }
 
-function view($path, $attributes): void
+function view($path, $attributes = []): void
 {
     extract($attributes);
     require base_path('views/' . $path);
+}
+
+function login($user): void
+{
+    $_SESSION['user'] = [
+        'email' => $user['email']
+    ];
+    session_regenerate_id(true);
+}
+
+function logout(): void
+{
+    $_SESSION = [];
+    session_destroy();
+
+    $prams = session_get_cookie_params();
+
+    setcookie('PHPSESSID', '', time() - 3600, $prams['path'], $prams['domain'], $prams['secure'], $prams['httponly']);
+
 }
